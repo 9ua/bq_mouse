@@ -759,11 +759,7 @@ export default {
               break;
             case "S1":
             case "S2":
-              this.featureDescription = `
-              1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.<br>
-              2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.<br>
-              3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.
-              `;
+              this.featureDescription = `1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.\n\n2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.\n\n3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.`;
               break;
           }
           break;
@@ -772,20 +768,12 @@ export default {
             case "FK1+":
             case "FK1":
             case "FK2":
-              this.featureDescription = `
-              1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed.<br>
-              2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm.<br>
-              3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.
-              `;
+              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed.\n\n2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm.\n\n3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
               break;
             case "ZA11":
             case "ZA12":
             case "ZA13":
-              this.featureDescription = `
-              1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.<br>
-              2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.<br>
-              3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.              
-              `;
+              this.featureDescription = `1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.\n\n2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.\n\n3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.              `;
               break;
             case "S2":
               this.featureDescription = "S Series has the same shape and comes in two sizes, S1 is bigger and S2 is smaller.";
@@ -797,20 +785,12 @@ export default {
             case "FK1+":
             case "FK1":
             case "FK2":
-              this.featureDescription = `
-              1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed.<br>
-              2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm.<br>
-              3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.
-              `;
+              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed.\n\n2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm.\n\n3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
               break;
             case "ZA11":
             case "ZA12":
             case "ZA13":
-              this.featureDescription = `
-              1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.<br>
-              2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.<br>
-              3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.              
-              `;
+              this.featureDescription = `1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.\n\n2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.\n\n3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.              `;
               break;
             case "S1":
               this.featureDescription = "S Series has the same shape and comes in two sizes, S1 is bigger and S2 is smaller.";

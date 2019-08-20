@@ -19,6 +19,9 @@ export default {
       { rel:'stylesheet',href:'https://fonts.googleapis.com/css?family=Montserrat&display=swap' }
     ]
   },
+  router: {
+    base: '/content/dam/game/en-us/mouse/'
+  },
   /*
   ** Customize the progress-bar color
   */

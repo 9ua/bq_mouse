@@ -20,7 +20,7 @@ export default {
     ]
   },
   router: {
-    base: '/content/dam/game/en-us/mouse/'
+    base: '/'
   },
   /*
   ** Customize the progress-bar color

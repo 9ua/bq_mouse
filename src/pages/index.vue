@@ -29,7 +29,7 @@
           <div style="float:right; line-height:54px;">
             <ul style="padding-right:40px">
               <li class="nav"><a href="https://zowie.benq.com/en-us/product/mouse.html" style="text-decoration:none;">PRODUCT</a></li> 
-              <li class="nav"><a href="https://zowie.benq.com/en-us/product/mouse.html" style="text-decoration:none;">WHERE TO BUY</a></li> 
+              <li class="nav"><a href="https://zowie.benq.com/en-us/where-to-buy.html" style="text-decoration:none;">WHERE TO BUY</a></li> 
               <li class="nav"><a href="https://zowie.benq.com/en-us/news.html" style="text-decoration:none;">NEWS</a></li> 
               <li class="nav"><a href="https://zowie.benq.com/en-us/support.html" style="text-decoration:none;">SUPPORT</a></li> 
               <li class="nav"><a href="https://zowie.benq.com/en-us/knowledge.html" style="text-decoration:none;">KNOWLEDGE CENTER</a></li> 
@@ -48,7 +48,7 @@
       <ul class="ul-c" style="padding-top: 16px">
         <li style="font-size:16px;line-height:19px;margin:22px 0;">
           <div class="radio-beauty-container">
-            <p style="color:#fff;"><b style="font-weight: bold; font-size: 18px;line-height: 22px;"> Shape：</b>
+            <p style="color:#fff;" > <b style="font-weight: bold; font-size: 18px;line-height: 22px;" title="Ergonomic design is exclusively for right-handed users. Ambidextrous design is symmetrical and therefore suitable for both right-handed and left-handed users."> * Shape：</b>
           <label style="margin: 0 40px">
               <input type="radio" name="shape" id="radioName1" hidden value="a" v-model="radio.shape"/>
               <label for="radioName1" class="radio-beauty"></label>
@@ -64,7 +64,7 @@
         </li>
         <li >
           <div class="radio-beauty-container">
-            <p style="color:#fff;"><b style="font-weight: bold; font-size: 18px;line-height: 22px;"> Coating：</b>
+            <p style="color:#fff;"><b style="font-weight: bold; font-size: 18px;line-height: 22px;" title="The Standard coating has a matte finish; the glossy coating has a shiny finish. Two types offer gamers different grip feelings."> * Coating：</b>
           <label style="margin: 0 40px">
               <input type="radio" name="coating" id="radioName3" hidden value="c" v-model="radio.coating"/>
               <label for="radioName3" class="radio-beauty"></label>
@@ -84,6 +84,7 @@
         <a
           target="_self"
           class="button--mouse"
+          style="cursor: pointer;"
           @click.prevent="handleSearch"
         >
           Search
@@ -92,6 +93,7 @@
           target="_blank"
           class="button--mouse"
           @click.prevent="handleClear"
+          style="cursor: pointer;"
         >
           Clear
         </a>
@@ -131,7 +133,7 @@
         <a
           target="_self"
           class="button--mouse"
-          style="float:right; margin:20px 0;width:185px"
+          style="float:right; margin:20px 0;width:185px;cursor: pointer;"
           @click.prevent="secondClear"
         >
           Remove All
@@ -149,6 +151,7 @@
         <a v-if="modelTwo != ''"
           target="_self"
           class="button--switch"
+          style="cursor: pointer;"
           @click.prevent="handleSwitch"
         >
           Switch
@@ -156,11 +159,11 @@
         <a v-if="modelTwo == ''"
           target="_self"
           class="button--switch"
-          style="background: #ccc;border-color:#ccc"
+          style="background: #ccc;border-color:#ccc;"
         >
           Switch
         </a>
-        <p v-if="modelTwo != ''" class="result"> {{modelTwo}}</p>
+        <p v-if="modelTwo != ''" class="result" style="colro:#CC0040"> <span style="color:#cc0040">{{modelTwo}}</span></p>
         <p v-if="modelOne != ''"  class="result"> {{modelOne}}</p>
       <div style="clear:both"></div>
      </div>
@@ -177,15 +180,15 @@
         <div style="width:420px; float:left">
           <h3 style="font-weight: bold;font-size: 18px;line-height: 22px;">About {{modelOne}}</h3>
           <p style="padding:20px 0 50px;font-size:14px"> {{configFile[modelOne].description}}</p>
-          <h3 v-if="modelTwo != ''" style="font-weight: bold;font-size: 18px;line-height: 22px;">About {{modelTwo}}</h3>
+          <h3 v-if="modelTwo != ''" style="font-weight: bold;font-size: 18px;line-height: 22px;">About <span style="color:#CC0040">{{modelTwo}}</span> </h3>
           <p v-if="modelTwo != ''" style="padding:20px 0 50px;font-size:14px"> {{configFile[modelTwo].description}}</p>
         </div>
         <div style="width:50%;padding:0 40px 60px;float:right">
           <div style="background:#ddd; width:99%;text-align:center;line-height:40px;border:1px #000 solid;">Measurement</div>
           <ul style="padding:0;text-align:center">
             <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left">(mm)</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left;color:#CC0040"> {{modelOneSeries}}</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left;color:#CC0040"> {{modelTwoSeries}}</li>
+            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left;color:#000"> {{modelOne}}</li>
+            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left;color:#CC0040"> {{modelTwo}}</li>
             <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left">Length</li>
             <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left">{{configFile[modelOne].length}}</li>
             <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left" v-if="modelTwo !=''" >{{configFile[modelTwo].length}}</li>
@@ -212,7 +215,7 @@
           <h1 style="font-size: 30px;line-height: 37px;text-align: center;color: #CC0044;">{{modelOne}}</h1>
           <img :src='"@/assets/images/"+configFile[modelOne].pic_right+".png"' style="width:100%;height:auto;">
           <a 
-            target="_self"
+            target="_blank"
             class="button--switch"
             style="float:none;margin:0;padding:10px; 20px;"
             :href='configFile[modelOne].link'
@@ -224,7 +227,7 @@
           <h1 style="font-size: 30px;line-height: 37px;text-align: center;color: #CC0044;">{{modelTwo}}</h1>
           <img :src='"@/assets/images/"+configFile[modelTwo].pic_right+".png"' style="width:100%;height:auto;">
           <a 
-            target="_self"
+            target="_blank"
             class="button--switch"
             style="float:none;margin:0;padding:10px; 20px;"
             :href='configFile[modelTwo].link'
@@ -474,7 +477,7 @@ export default {
             Series:"S Series",
             pic1:"s1-right-photo",
             pic2:"s1-dv-blue-right-photo",
-            content:"65% of CS:GO professional players using S2 are claw grip. 35% of players are palm grip.",
+            content:"65% of CS:GO professional players using S1 are claw grip. 35% of players are palm grip.",
             callback: this.print
           },
           {

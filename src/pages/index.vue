@@ -48,32 +48,72 @@
       <ul class="ul-c" style="padding-top: 16px">
         <li style="font-size:16px;line-height:19px;margin:22px 0;">
           <div class="radio-beauty-container">
-            <p style="color:#fff;" > <b style="font-weight: bold; font-size: 18px;line-height: 22px;" title="Ergonomic design is exclusively for right-handed users. Ambidextrous design is symmetrical and therefore suitable for both right-handed and left-handed users."> * Shape：</b>
+            <p style="color:#fff;" > <b style="font-weight: bold; font-size: 18px;line-height: 22px;" >Shape:</b>
           <label style="margin: 0 40px">
               <input type="radio" name="shape" id="radioName1" hidden value="a" v-model="radio.shape"/>
               <label for="radioName1" class="radio-beauty"></label>
-              <span class="radio-name">Ergonomic</span>
+              <el-popover
+                placement="top-start"
+                title=""
+                width="400"
+                trigger="hover"
+                transition="none"
+                content="">
+                <span class="radio-name" slot="reference">Ergonomic</span>
+                <!-- <el-button slot="reference">hover 激活</el-button>   -->
+         <img src="@/assets/images/ergonomic-mouseover.jpg" style="width:100%;height:auto;">
+              </el-popover>
           </label>
           <label>
               <input type="radio" name="shape" id="radioName2" hidden value="b" v-model="radio.shape"/>
               <label for="radioName2" class="radio-beauty"></label>
-              <span class="radio-name">Ambidextrous</span>
+              <el-popover
+                placement="top-start"
+                title=""
+                width="400"
+                trigger="hover"
+                transition="none"
+                content="">
+                <span class="radio-name" slot="reference">Ambidextrous</span>
+                <!-- <el-button slot="reference">hover 激活</el-button>   -->
+         <img src="@/assets/images/ambidextrous-mouseover.jpg" style="width:100%;height:auto; ">
+              </el-popover>
           </label>
           </p>
           </div>
         </li>
         <li >
           <div class="radio-beauty-container">
-            <p style="color:#fff;"><b style="font-weight: bold; font-size: 18px;line-height: 22px;" title="The Standard coating has a matte finish; the glossy coating has a shiny finish. Two types offer gamers different grip feelings."> * Coating：</b>
+            <p style="color:#fff;"><b style="font-weight: bold; font-size: 18px;line-height: 22px;">Coating:</b>
           <label style="margin: 0 40px">
               <input type="radio" name="coating" id="radioName3" hidden value="c" v-model="radio.coating"/>
               <label for="radioName3" class="radio-beauty"></label>
-              <span class="radio-name">Standard</span>
+              <el-popover
+                placement="top-start"
+                title=""
+                width="400"
+                trigger="hover"
+                transition="none"
+                content="">
+                <span class="radio-name" slot="reference">Standard</span>
+                <!-- <el-button slot="reference">hover 激活</el-button>   -->
+         <img src="@/assets/images/standard-mouseover.jpg" style="width:100%;height:auto; ">
+              </el-popover>
           </label>
           <label>
               <input type="radio" name="coating" id="radioName4" hidden value="d" v-model="radio.coating"/>
               <label for="radioName4" class="radio-beauty"></label>
-              <span class="radio-name">Glossy</span>
+              <el-popover
+                placement="top-start"
+                title=""
+                width="400"
+                trigger="hover"
+                transition="none"
+                content="">
+                <span class="radio-name" slot="reference">Glossy</span>
+                <!-- <el-button slot="reference">hover 激活</el-button>   -->
+         <img src="@/assets/images/glossy-mouseover.jpg" style="width:100%;height:auto;">
+              </el-popover>
           </label>
           </p>
           </div>
@@ -104,7 +144,7 @@
     <section v-if="secondArea">
       <div class="content2" style="background:#000;padding:10px 30px;margin-top:40px;margin-bottom:10px">
         <h1 style="font-weight:400;color:#B12741;font-size: 30px;line-height: 37px;padding:30px 0;">Select 2 models to compare.</h1>
-        <!-- <p style="color:#fff;font-size: 18px;line-height: 22px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, iure.</p> -->
+        <p v-if="secondArea == 'bd'" style="color:#fff;font-size: 18px;line-height: 22px;">Some glossy version models are currently not available. You can choose the standard version to compare.<br><br></p>
         
         <div class="formhead"> </div>
         <div class="formhead"> EC Series</div>
@@ -112,32 +152,49 @@
         <div class="formhead"> ZA Series</div>
         <div class="formhead"> S Series</div>
         <ul style="padding:0px">
-          <li v-for="(item,index) in itemlist" :key="index" style="position: relative;min-height:230px;background: #FFFFFF;border: 1px solid #000000;width:20%;float:left;text-align:center;padding:26px 17px">
+          <li v-for="(item,index) in itemlist" :key="index" style="position: relative;min-height:180px;background: #FFFFFF;border: 1px solid #000000;width:20%;float:left;text-align:center;padding:14px 17px 0">
             <div class="divMask" style="overflow: hidden;" v-if="item.showtime != false || item.covered != false"></div>
-            <div @click="select(item,index)">
+            <div>
               <span style="font-size: 26px;line-height: 30px;text-align: center;">{{item.name}}</span>
               <div style="height:80px;width:100%" v-if="item.name != ''">
-                <div style="border-radius: 3px;width:40px;height:40px;border:3px #888 solid;position:related;float:left" v-if="item.covered != true && item.showtime != true ">
+                <div @click="select(item,index)" style="cursor:pointer;border-radius: 3px;width:40px;height:40px;border:3px #888 solid;position:related;float:left" v-if="item.covered != true && item.showtime != true ">
                     <div style="background:#CC0040;height:100%" v-if="modelTwo == item.name"><div class="checked"></div></div>
                     <div style="background:#000;height:100%" v-if="modelOne == item.name"><div class="checked"></div></div>
                 </div>
                 <img :src='"@/assets/images/"+item.pic1+".png"' style="width:118px;height:80px;" v-if="picMode == 1">
                 <img :src='"@/assets/images/"+item.pic2+".png"' style="width:118px;height:80px;" v-if="picMode == 2">
               </div>
-              <span style="font-size: 36px;line-height:" v-if="item.title != null"><br><br>{{item.title}}</span>
-              <p style="text-align:left;font-size: 14px;line-height: 16px;">{{item.content}}</p>
+              <span style="font-size: 36px;line-height: 30px" v-if="item.title != null"><br><br>{{item.title}}</span>
+              <el-popover
+                placement="top-start"
+                width="800"
+                trigger="hover"
+                :close-delay="0"
+                transition="none"
+                v-if="item.name != ''"
+                style="cursor:pointer;"
+                >
+                <img :src='"@/assets/images/"+item.pic3+".jpg"' style="width:100%;height:auto; ">
+                <!-- <p v-if="secondArea == 'bd' && item.ag != null" style="color:#CC0040">{{item.ag}}</p> -->
+                <div style="text-align: right; margin: 0">
+                  <!-- <el-button size="mini" type="text" @click="visible = false">取消</el-button> -->
+                  <!-- <el-button type="primary" size="mini" @click="visible = false">确定</el-button> -->
+                </div>
+                <el-button slot="reference">Gestures</el-button>
+              </el-popover>
+              <!-- <p style="text-align:left;font-size: 14px;line-height: 16px;">{{item.content}}</p> -->
             </div>
           </li>
         </ul>
-        
-        <a
+        <p v-if="modelOne !=''" style="color:#fff;font-size: 18px;line-height: 80px;">You can see the results below.</p>
+        <!-- <a
           target="_self"
           class="button--mouse"
           style="float:right; margin:20px 0;width:185px;cursor: pointer;"
           @click.prevent="secondClear"
         >
           Remove All
-        </a>
+        </a> -->
         <div style="clear:both;"></div>
       </div>
     </section>
@@ -145,7 +202,8 @@
     <section style="padding-top:60px;padding-bottom:60px; background:#fff" v-if="modelOne != ''">
     <div class="content">
      <div style="width:100%">
-        <h1 style="font-weight:400;color:#B12741;font-size: 30px;line-height: 37px;padding:30px 0;">Results</h1>
+        <h1 style="font-weight:400;color:#B12741;font-size: 30px;line-height: 37px;padding:20px 0 10px;">Results</h1>
+        <p style="color:#333;font-size: 18px;line-height: 22px;">Any questions? Contact us on <a href="https://twitter.com/ZOWIEbyBenQUSA" target="_blank" style="color:#1DA1F2;font-weight:600">Twitter</a>!</p>
      </div>
      <div style="width=100%; line-height:60px">
         <a v-if="modelTwo != ''"
@@ -177,36 +235,54 @@
         <img v-if="modelTwo != ''" :src='"@/assets/images/"+configFile[modelTwo].pic_red_right+".png"' style="z-index:3;position:absolute;margin-left:550px;width:550px;height:auto;">
       </div>
       <div style="width:100%;">
-        <div style="width:420px; float:left">
+        <!-- <div style="width:420px; float:left">
           <h3 style="font-weight: bold;font-size: 18px;line-height: 22px;">About {{modelOne}}</h3>
           <p style="padding:20px 0 50px;font-size:14px"> {{configFile[modelOne].description}}</p>
           <h3 v-if="modelTwo != ''" style="font-weight: bold;font-size: 18px;line-height: 22px;">About <span style="color:#CC0040">{{modelTwo}}</span> </h3>
           <p v-if="modelTwo != ''" style="padding:20px 0 50px;font-size:14px"> {{configFile[modelTwo].description}}</p>
-        </div>
-        <div style="width:50%;padding:0 40px 60px;float:right">
-          <div style="background:#ddd; width:99%;text-align:center;line-height:40px;border:1px #000 solid;">Measurement</div>
+        </div> -->
+        <div style="width:15%;height:10px;float:left"> </div>
+        <div style="width:70%;padding:0 40px 60px;float:left">
+          <div style="background:#ddd; width:96%;text-align:center;line-height:40px;border:1px #000 solid;">Measurement</div>
           <ul style="padding:0;text-align:center">
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left">(mm)</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left;color:#000"> {{modelOne}}</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left;color:#CC0040"> {{modelTwo}}</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left">Length</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left">{{configFile[modelOne].length}}</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left" v-if="modelTwo !=''" >{{configFile[modelTwo].length}}</li>
-            <li style="border:1px #000 solid;height:40px;line-height:40px;width:33%;float:left" v-else >-</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left">Height</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left">{{configFile[modelOne].height}}</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left"  v-if="modelTwo !=''">{{configFile[modelTwo].height}}</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left"  v-else>-</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left">Width(Middle)</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left">{{configFile[modelOne].width}}</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left"  v-if="modelTwo !=''">{{configFile[modelTwo].width}}</li>
-            <li style="border:1px #000 solid;line-height:40px;width:33%;float:left"  v-else>-</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">(mm / inch)</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">Length</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">Height</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">Width(Middle)</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left;color:#000"> {{modelOne}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">{{configFile[modelOne].length}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">{{configFile[modelOne].height}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">{{configFile[modelOne].width}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left;color:#CC0040" v-if="modelTwo !=''"> {{modelTwo}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left" v-else >-</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left" v-if="modelTwo !=''" >{{configFile[modelTwo].length}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left" v-else >-</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-if="modelTwo !=''">{{configFile[modelTwo].height}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-else>-</li>            
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-if="modelTwo !=''">{{configFile[modelTwo].width}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-else>-</li>
+
+            <!-- <li style="border:1px #000 solid;height:40px;line-height:40px;width:24%;float:left;color:#000"> {{modelOne}}</li>
+            <li style="border:1px #000 solid;height:40px;line-height:40px;width:24%;float:left;color:#CC0040"> {{modelTwo}}</li>
+            <li style="border:1px #000 solid;height:40px;line-height:40px;width:24%;float:left">Length</li>
+            <li style="border:1px #000 solid;height:40px;line-height:40px;width:24%;float:left">{{configFile[modelOne].length}}</li>
+            <li style="border:1px #000 solid;height:40px;line-height:40px;width:24%;float:left" v-if="modelTwo !=''" >{{configFile[modelTwo].length}}</li>
+            <li style="border:1px #000 solid;height:40px;line-height:40px;width:24%;float:left" v-else >-</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">Height</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">{{configFile[modelOne].height}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-if="modelTwo !=''">{{configFile[modelTwo].height}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-else>-</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">Width(Middle)</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left">{{configFile[modelOne].width}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-if="modelTwo !=''">{{configFile[modelTwo].width}}</li>
+            <li style="border:1px #000 solid;line-height:40px;width:24%;float:left"  v-else>-</li> -->
 
           </ul>
         </div>
         <div style="clear:both"></div>
       </div>
       <div style="width:100%;background:#e8e8e8;padding:40px 40px" v-if="modelOne != '' && modelTwo !=''">
+        <h3 style="font-weight: bold;font-size: 18px;line-height: 22px;">Features<br><br></h3>
         <p class="text-wrapper">{{ this.featureDescription }}</p>
       </div>
       <div style="width:100%;padding:40px 40px" v-if="modelOne != '' && modelTwo !=''">
@@ -240,6 +316,22 @@
       </div>
     </div>
     </section>
+    <div class="content" style="align-items: center;text-align:center">
+          <a 
+            v-if="modelTwo !=''"
+            target="_self"
+            class="button--switch"
+            style="float:none;padding:10px;width:240px;margin:0 0 20px"
+            @click="openForm =! openForm"
+          >
+          Apply for Trial
+          </a>
+          <p v-if="modelTwo !=''" style="color:#333;font-size: 18px;line-height: 22px;">(Trial service is for the U.S. only.)</p>
+
+          <iframe v-if="openForm" src="../aaa.html" frameborder="0" style="width:100%;height:1090px"></iframe>
+          <!-- <div style="width:100%;height:30px; background:#3c0000" id="hehe" @click="def"></div> -->
+          <div style="clear:both"></div>
+    </div>
 
         <div style="width:100%;background:#fff;float:bottom;position:absolute;">
           <div class="content">
@@ -318,6 +410,8 @@ export default {
         shape: null,
         coating: null
       },
+      visible: false,
+      openForm:false,
       modelOne:"",
       modelOneSeries:"",
       modelTwo:"",
@@ -354,6 +448,8 @@ export default {
             covered: false,
             pic1:"fk1+-right-photo",
             pic2:"fk1+-right-photo",
+            pic3:"fk-series-feature1-gesture",
+            ag:"The glossy version is currently not available. You can choose the standard version to compare the difference.",
             callback: this.print
           },
           {
@@ -391,6 +487,7 @@ export default {
             Series:"EC Series",
             pic1: "ec1-b-right-photo",
             pic2: "ec1-b-dv-blue-right-photo",
+            pic3: "ec-series-feature1-gesture",
             content: "80% of CS:GO professional players using EC1 are palm grip. 20% of players are claw grip.",
             callback: this.print
           },
@@ -402,6 +499,8 @@ export default {
             Series:"FK Series",
             pic1: "fk1-right-photo",
             pic2: "fk1-right-photo",
+            pic3: "fk-series-feature1-gesture",
+            ag:"The glossy version is currently not available. You can choose the standard version to compare the difference.",
             content: "80% of CS:GO professional players using FK1 are claw grip. 20% of players are palm grip.",
             callback: this.print
           },
@@ -413,6 +512,7 @@ export default {
             Series:"ZA Series",
             pic1: "za11-right-photo",
             pic2:"za11-white-right-photo",
+            pic3:"za-series-feature1-gesture",
             content: "90% of CS:GO professional players using ZA11 are palm grip.",
             callback: this.print
           },
@@ -442,6 +542,7 @@ export default {
             Series:"EC Series",
             pic1: "ec2-b-right-photo",
             pic2: "ec2-b-dv-blue-right-photo",
+            pic3:"ec-series-feature1-gesture",
             content: "50% of CS:GO professional players using EC2 are claw grip. 50% of players are palm grip.",
             callback: this.print
           },
@@ -454,6 +555,7 @@ export default {
             Series:"FK Series",
             pic1:"fk2-right-photo",
             pic2:"fk2-white-right-photo",
+            pic3:"fk-series-feature1-gesture",
             content: "50% of CS:GO professional players using FK2 are claw grip, 50% of players are palm grip.",
             callback: this.print
           },
@@ -466,6 +568,8 @@ export default {
             Series:"ZA Series",
             pic1:"za12-right-photo",
             pic2:"za12-right-photo",
+            pic3:"za-series-feature1-gesture",
+            ag:"The glossy version is currently not available. You can choose the standard version to compare the difference.",
             content:"65% of CS:GO professional players using ZA12 are claw grip. 35% of players are palm grip.",
             callback: this.print
           },
@@ -477,6 +581,7 @@ export default {
             Series:"S Series",
             pic1:"s1-right-photo",
             pic2:"s1-dv-blue-right-photo",
+            pic3:"s-series-feature1-gesture",
             content:"65% of CS:GO professional players using S1 are claw grip. 35% of players are palm grip.",
             callback: this.print
           },
@@ -515,6 +620,8 @@ export default {
             Series:"ZA Series",
             pic1:"za13-right-photo",
             pic2:"za13-right-photo",
+            pic3:"za-series-feature1-gesture",
+            ag:"The glossy version is currently not available. You can choose the standard version to compare the difference.",
             content:"50% of CS:GO professional players using ZA13 are claw grip, 50% of players are palm grip.",
             callback: this.print
           },
@@ -526,6 +633,7 @@ export default {
             Series:"S Series",
             pic1:"s2-right-photo",
             pic2:"s2-dv-blue-right-photo",
+            pic3:"s-series-feature1-gesture",
             content:"60% of CS:GO professional players using S2 are claw grip. 40% of players are palm grip.",
             callback: this.print
           }
@@ -534,11 +642,30 @@ export default {
   },
   mounted() {
     console.log("Es,Eg,As,Ag: ", Es,Eg,As,Ag);
+
   },
   computed: {
 
   },
   methods: {
+      open() {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+      },
     select(item,index) {
 
       if (this.modelOne == "") {
@@ -633,7 +760,7 @@ export default {
           this.secondArea = "bd";
           this.configFile = Ag;
           this.picMode = 2;
-          this.itemlist[2].covered =this.itemlist[7].covered =this.itemlist[6].covered =this.itemlist[11].covered =this.itemlist[13].covered =this.itemlist[18].covered = true;
+          this.itemlist[6].covered =this.itemlist[11].covered = true;
           break;
         default:
           console.log("no config");
@@ -646,6 +773,26 @@ export default {
       this.secondArea = "";
       this.modelOne ="";
       this.modelTwo = "";
+    },
+    def() {
+      const s = document.createElement('script'); 
+      s.type = 'text/javascript';
+      s.id = "aaa"; 
+      s.src = 'https://js.hsforms.net/forms/v2.js'; 
+      document.getElementById("hehe").appendChild(s); 
+      setTimeout(() => {
+        const p = document.createElement('script'); 
+        p.type = 'text/javascript';
+        p.id = "bbb"; 
+        document.getElementById("hehe").appendChild(p);
+        const z = 'hbspt.forms.create({portalId: "159104",formId: "fa06fac4-de74-4e35-a5f5-ffd11c05b365"});'; 
+        document.getElementById("bbb").appendChild(z);
+        // hbspt.forms.create({ 
+        //           portalId: "159104", 
+        //           formId: "fa06fac4-de74-4e35-a5f5-ffd11c05b365" 
+        // });         
+      }, 2000);
+
     },
     secondClear() {
       for (var i = 0; i<= 19; i++) {
@@ -673,11 +820,11 @@ export default {
             case "ZA11":
             case "ZA12":
             case "ZA13":
-              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required. \n\n 2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm. \n\n 3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
+              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required.\n\n2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm.\n\n3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
               break;
             case "S1":
             case "S2":
-              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed. \n\n 2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm. \n\n 3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
+              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed.\n\n2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm.\n\n3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
               break;
           }
           break;
@@ -690,11 +837,11 @@ export default {
             case "ZA11":
             case "ZA12":
             case "ZA13":
-              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required. \n\n 2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm. \n\n 3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
+              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required.\n\n2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm.\n\n3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
               break;
             case "S1":
             case "S2":
-              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed. \n\n 2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm. \n\n 3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
+              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed.\n\n2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm.\n\n3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
               break;
           }
           break;
@@ -707,11 +854,11 @@ export default {
             case "ZA11":
             case "ZA12":
             case "ZA13":
-              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required. \n\n 2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm. \n\n 3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
+              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required.\n\n2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm.\n\n3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
               break;
             case "S1":
             case "S2":
-              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed. \n\n 2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm. \n\n 3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
+              this.featureDescription = `1. Both series are ambidextrous. The S Series without right-side buttons is designed for right-handed.\n\n2. FK Series has a lower profile providing less support for palm; S Series has a higher profile, providing more support for palm.\n\n3. S Series is designed to have a shorter overall length, allowing users to easily wrap around and hold the mouse. The front ends of the mouse have been raised to provide more space to place the 4th finger and easily lift the mouse.`;
               break;
           }
           break;
@@ -720,7 +867,7 @@ export default {
             case "FK1+":
             case "FK1":
             case "FK2":
-              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required. \n\n 2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm. \n\n 3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
+              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required.\n\n2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm.\n\n3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
               break;
             case "ZA11":
             case "ZA13":
@@ -728,7 +875,7 @@ export default {
               break;
             case "S1":
             case "S2":
-              this.featureDescription = `1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users. \n\n 2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel. \n\n 3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.`;
+              this.featureDescription = `1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.\n\n2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.\n\n3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.`;
               break;
           }
           break;
@@ -737,7 +884,7 @@ export default {
             case "FK1+":
             case "FK1":
             case "FK2":
-              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required. \n\n 2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm. \n\n 3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
+              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required.\n\n2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm.\n\n3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
               break;
             case "ZA12":
             case "ZA13":
@@ -745,7 +892,7 @@ export default {
               break;
             case "S1":
             case "S2":
-              this.featureDescription = `1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users. \n\n 2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel. \n\n 3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.`;
+              this.featureDescription = `1. Both series are ambidextrous, and the S Series without right-side buttons is designed for right-handed users.\n\n2. Both ZA and S Series have a high profile design providing sufficient palm support, however their highest points are in different positions. The ZA’s peak is closer to the back while the S’s peak is more in the center. Because of this the weight distribution will be different giving each mouse a different movement feel.\n\n3. Both ZA and S Series's front ends are designed for easy lifting during swiping movements or quick adjustments. ZA has a notch for your 4th finger while the S has more room to place the 4th finger.`;
               break;
           }
           break;
@@ -754,7 +901,7 @@ export default {
             case "FK1+":
             case "FK1":
             case "FK2":
-              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required. \n\n 2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm. \n\n 3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
+              this.featureDescription = `1. Both series are ambidextrous and are able to switch between right or left-hand modes by holding down button combinations during plug-in. No drivers required.\n\n2. FK Series has a lower profile and its hump is closer to fingers, providing less support for palm; ZA Series has a higher profile, providing more support for palm.\n\n3. ZA Series has projected notches on both front ends that allow users to lift the mouse easily.`;
               break;
             case "ZA11":
             case "ZA12":

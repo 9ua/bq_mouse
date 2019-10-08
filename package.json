@@ -1,8 +1,8 @@
 {
   "name": "mouse",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "My wonderful Nuxt.js project",
-  "author": "fred",
+  "author": "deven",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -11,8 +11,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "element-ui": "^2.4.11"
+    "@nuxtjs/google-gtag": "^1.0.4",
+    "element-ui": "^2.4.11",
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {}
 }

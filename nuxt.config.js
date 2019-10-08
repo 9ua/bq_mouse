@@ -1,9 +1,10 @@
 
 export default {
+  
   mode: 'spa',
 
   srcDir: 'src',
-
+  
   /*
   ** Headers of the page
   */
@@ -47,7 +48,26 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    // 一般的使用方式
+    '@nuxtjs/google-gtag',
+    // 如果你想要自訂一些選項，就可以這樣寫
+    ['@nuxtjs/google-gtag', { /* module options */ }],
   ],
+    // 開始加入GA code
+    'google-gtag':{
+      id: 'UA-146595703-1', // 必填，請填寫剛申請到的追蹤碼ID
+      config:{
+        // 這裡是填寫對gtag的需求選項」
+        anonymize_ip: true, 
+        send_page_view: false, // 避免頁面刷新時後的重複追蹤
+        linker:{ // 跨域追蹤，追蹤兩個相關但不同網域的頁面
+          domains:['domain.com','domain.org']
+        }
+      },
+      debug: true, // 允許在開發中進行追蹤
+      disableAutoPageTrack: false // 關閉追蹤每個頁面路由
+    },
+
   /*
   ** Build configuration
   */
